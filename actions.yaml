@@ -22,18 +22,18 @@ add-user:
             description: "The username to add"
             type: string
             default: ""
-    bw:
-        description: ""
-        type: integer
-        default: 0
-    qos:
-        description: ""
-        type: integer
-        default: 0
-    tariff:
-        description: ""
-        type: integer
-        default: 0
+        bw:
+            description: ""
+            type: integer
+            default: 0
+        qos:
+            description: ""
+            type: integer
+            default: 0
+        tariff:
+            description: ""
+            type: integer
+            default: 0
 
     required:
         # We're only requiring username here, and will use the default values
