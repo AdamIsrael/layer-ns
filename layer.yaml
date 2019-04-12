@@ -1,0 +1,6 @@
+includes:
+  - 'layer:basic'
+  - 'layer:osm-ns'
+options:
+  basic:
+    use_venv: false
