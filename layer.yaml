@@ -1,8 +1,6 @@
 includes:
   - 'layer:basic'
   - 'layer:osm-ns'
-  - 'layer:vnfproxy'
-  - 'layer:sshproxy'
 options:
   basic:
     use_venv: false
