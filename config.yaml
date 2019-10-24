@@ -1,9 +1,4 @@
 options:
-    nsr-name:
-        default:
-        description: The runtime name of the Network Service, i.e., what its deployed name is.
-        type: string
-
     user-member-index:
         default:
         description: The vnf-member-index of the user VNF.

@@ -68,7 +68,7 @@ def add_user(client, username, tariff):
 
     cfg = config()
 
-    application = client.GetApplicationName(cfg['nsr-name'], cfg['user-vdu-id'], cfg['user-member-index'])
+    application = client.GetApplicationName(cfg['user-vdu-id'], cfg['user-member-index'])
 
     output = client.ExecutePrimitiveGetOutput(
         # The name of the application for adding a user
@@ -96,7 +96,7 @@ def set_policy(client, user_id, bw, qos):
     success = False
 
     cfg = config()
-    application = client.GetApplicationName(cfg['nsr-name'], cfg['policy-vdu-id'], cfg['policy-member-index'])
+    application = client.GetApplicationName(cfg['policy-vdu-id'], cfg['policy-member-index'])
 
     success = client.ExecutePrimitiveGetOutput(
         # The name of the application for policy management
