@@ -15,6 +15,8 @@ from charms.reactive import (
     when_not,
 )
 import charms.osm.ns
+import json
+import traceback
 
 
 @when_not('ns.installed')
@@ -53,6 +55,7 @@ def action_add_user():
 
     except Exception as err:
         log(str(err))
+        log(str(traceback.format_exc()))
         action_fail(str(err))
     else:
         action_set({
@@ -68,7 +71,13 @@ def add_user(client, username, tariff):
 
     cfg = config()
 
-    application = client.GetApplicationName(cfg['user-vdu-id'], cfg['user-member-index'])
+    ns_config_info = json.loads(cfg['ns_config_info'])
+
+    application = ns_config_info['osm-config-mapping']['{}.{}.{}'.format(
+        '1', # member-vnf-index
+        'userVM', # vdu_id
+        '0', # vdu_count_index
+    )]
 
     output = client.ExecutePrimitiveGetOutput(
         # The name of the application for adding a user
@@ -96,7 +105,13 @@ def set_policy(client, user_id, bw, qos):
     success = False
 
     cfg = config()
-    application = client.GetApplicationName(cfg['policy-vdu-id'], cfg['policy-member-index'])
+    ns_config_info = json.loads(cfg['ns_config_info'])
+
+    application = ns_config_info['osm-config-mapping']['{}.{}.{}'.format(
+        '2', # member-vnf-index
+        'policyVM', # vdu_id
+        '0', # vdu_count_index
+    )]
 
     success = client.ExecutePrimitiveGetOutput(
         # The name of the application for policy management
